@@ -1,0 +1,84 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Uday Pratap Portfolio</title>
+<link rel="stylesheet" href="style.css">
+<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+</head>
+
+<body>
+
+<div id="particles-js"></div>
+
+<header class="glass">
+<h2>Uday Pratap</h2>
+
+<nav>
+<a href="#home">Home</a>
+<a href="#projects">Projects</a>
+<a href="#github">GitHub</a>
+<a href="#contact">Contact</a>
+</nav>
+
+<a class="resume-btn" href="resume.pdf" download>Download Resume</a>
+</header>
+
+<section id="home" class="home">
+<h1>Hello I'm</h1>
+<h1 class="name">Uday Pratap</h1>
+<h2 class="typing"></h2>
+</section>
+
+
+<section id="projects">
+<h2>Featured Projects</h2>
+
+<div class="project-grid">
+
+<div class="card glass">
+<h3>Task Dashboard</h3>
+<p>Node.js + React task manager</p>
+</div>
+
+<div class="card glass">
+<h3>Weather App</h3>
+<p>API based weather application</p>
+</div>
+
+<div class="card glass">
+<h3>Portfolio Website</h3>
+<p>Modern developer portfolio</p>
+</div>
+
+</div>
+</section>
+
+
+<section id="github">
+<h2>GitHub Projects</h2>
+<div id="githubProjects" class="project-grid"></div>
+</section>
+
+
+<section id="contact">
+<h2>Contact Me</h2>
+
+<form action="mailto:your@email.com" method="post" enctype="text/plain" class="glass">
+
+<input type="text" name="name" placeholder="Your Name" required>
+<input type="email" name="email" placeholder="Your Email" required>
+<textarea name="message" placeholder="Your Message"></textarea>
+
+<button type="submit">Send Message</button>
+
+</form>
+
+</section>
+
+
+<script src="script.js"></script>
+</body>
+</html>
