@@ -6,7 +6,9 @@
 
 @layer base {
   body {
-    @apply bg-theme-bg text-theme-text antialiased font-sans overflow-x-hidden;
+    background-color: #0B0B0F;
+    color: #EAEAEA;
+    @apply antialiased font-sans overflow-x-hidden;
     /* Hide default cursor for custom cursor experience */
     cursor: none;
   }
