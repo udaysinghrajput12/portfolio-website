@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-dark text-light antialiased font-sans overflow-x-hidden;
+    /* Hide default cursor for custom cursor experience */
+    cursor: none;
+  }
+  
+  /* Fallback cursor hide for all children */
+  * {
+    cursor: none !important;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display tracking-tight;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #050505; 
+}
+::-webkit-scrollbar-thumb {
+  background: #333; 
+}
+
+/* Base selection */
+::selection {
+  background-color: #d0ff00;
+  color: #050505;
+}
+
+/* Utility to render hollow text (outline) */
+@layer utilities {
+  .text-outline {
+    color: transparent;
+    -webkit-text-stroke: 1px #a3a3a3;
+  }
+  
+  .text-outline-hover:hover {
+    color: #d0ff00;
+    -webkit-text-stroke: 1px transparent;
+    transition: all 0.3s ease;
+  }
+}
