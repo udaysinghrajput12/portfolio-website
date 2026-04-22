@@ -6,13 +6,20 @@
 
 @layer base {
   body {
-    background-color: #0B0B0F;
-    color: #EAEAEA;
-    @apply antialiased font-sans overflow-x-hidden;
+    @apply antialiased font-sans overflow-x-hidden transition-colors duration-500 bg-[#F9FAFB] dark:bg-[#0B0B0F] text-[#111111] dark:text-[#EAEAEA];
     /* Hide default cursor for custom cursor experience */
     cursor: none;
   }
   
+  html {
+    @apply transition-colors duration-500;
+  }
+  
+  /* Global smooth transitions for theme switching */
+  *, *::before, *::after {
+    @apply transition-colors duration-500;
+  }
+
   /* Fallback cursor hide for all children */
   * {
     cursor: none !important;
@@ -28,16 +35,15 @@
   width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #0B0B0F; 
+  @apply bg-[#F9FAFB] dark:bg-[#0B0B0F];
 }
 ::-webkit-scrollbar-thumb {
-  background: #333; 
+  @apply bg-neutral-300 dark:bg-neutral-800 rounded-full;
 }
 
 /* Base selection */
 ::selection {
-  background-color: #D4AF37;
-  color: #0B0B0F;
+  @apply bg-blue-600 dark:bg-[#D4AF37] text-white dark:text-[#0B0B0F];
 }
 
 /* Utility to render hollow text (outline) */
@@ -48,8 +54,9 @@
   }
   
   .text-outline-hover:hover {
-    color: #D4AF37;
+    @apply text-blue-600 dark:text-[#D4AF37];
     -webkit-text-stroke: 1px transparent;
     transition: all 0.3s ease;
   }
 }
+

@@ -43,33 +43,34 @@ const SystemPreview = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="py-40 md:py-64 px-6 md:px-16 lg:px-32 bg-[#0B0B0F] relative z-20 w-full overflow-hidden border-t border-white/5">
+    <section ref={sectionRef} className="py-40 md:py-64 px-6 md:px-16 lg:px-32 transition-colors duration-500 bg-[#F9FAFB] dark:bg-[#0B0B0F] relative z-20 w-full overflow-hidden border-t border-black/5 dark:border-white/5">
       <div className="max-w-[90rem] mx-auto flex flex-col lg:flex-row items-center lg:items-center justify-between gap-24 lg:gap-32 w-full">
         
         {/* Left Side: Minimal Text Content */}
         <div ref={textRef} className="w-full lg:w-1/2 flex flex-col gap-8 md:gap-12">
-          <h3 className="text-xs tracking-[0.2em] text-[#D4AF37] uppercase font-medium">System Preview</h3>
+          <h3 className="text-xs tracking-[0.2em] text-blue-600 dark:text-[#D4AF37] uppercase font-medium transition-colors duration-500">System Preview</h3>
           
-          <h2 className="text-4xl md:text-5xl lg:text-7xl font-display font-light leading-[1.1] text-[#EAEAEA] max-w-2xl">
+          <h2 className="text-4xl md:text-5xl lg:text-7xl font-display font-light leading-[1.1] text-[#111111] dark:text-[#EAEAEA] max-w-2xl transition-colors duration-500">
             Executing scalable solutions with modern technologies.
           </h2>
           
-          <p className="text-lg md:text-xl text-neutral-500 font-light max-w-lg leading-relaxed">
+          <p className="text-lg md:text-xl text-neutral-600 dark:text-neutral-500 font-light max-w-lg leading-relaxed transition-colors duration-500">
             Focused on robust architectures that handle heavy data securely while pushing pristine logic straight to the client interface.
           </p>
         </div>
 
         {/* Right Side: Simple Minimalist Visual Placeholder */}
         <div ref={visualRef} className="w-full lg:w-1/2 flex justify-center lg:justify-end">
-            <div className="w-[80vw] h-[80vw] md:w-[25rem] md:h-[25rem] rounded-full border border-neutral-900 bg-gradient-to-tr from-transparent to-[#D4AF37]/5 flex items-center justify-center relative overflow-hidden">
+            <div className="w-[80vw] h-[80vw] md:w-[25rem] md:h-[25rem] rounded-full border border-black/5 dark:border-neutral-900 bg-gradient-to-tr from-transparent to-blue-600/5 dark:to-[#D4AF37]/5 flex items-center justify-center relative overflow-hidden transition-colors duration-500">
                {/* Very subtle static geometry logic lines inside */}
                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(59,130,246,0.05)_0%,transparent_70%)]"></div>
-               <div className="w-16 h-16 md:w-32 md:h-32 rounded-full border-[0.5px] border-[#D4AF37]/20"></div>
+               <div className="w-16 h-16 md:w-32 md:h-32 rounded-full border-[0.5px] border-blue-600/20 dark:border-[#D4AF37]/20 transition-colors duration-500"></div>
             </div>
         </div>
 
       </div>
     </section>
+
   );
 };
 

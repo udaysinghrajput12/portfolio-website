@@ -51,32 +51,32 @@ const Contact = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="py-40 md:py-64 px-6 md:px-16 lg:px-32 bg-[#0B0B0F] border-t border-white/5 relative flex flex-col justify-center items-center overflow-hidden w-full m-0 min-h-[90vh]">
+    <section ref={sectionRef} className="py-40 md:py-64 px-6 md:px-16 lg:px-32 transition-colors duration-500 bg-[#F9FAFB] dark:bg-[#0B0B0F] border-t border-black/5 dark:border-white/5 relative flex flex-col justify-center items-center overflow-hidden w-full m-0 min-h-[90vh]">
       
-      <div ref={textRef} className="text-center w-full flex flex-col items-center gap-16 md:gap-32 w-full transform will-change-transform z-10">
-        <h2 className="text-[12vw] md:text-[8rem] lg:text-[10rem] font-display font-light text-[#EAEAEA] leading-none tracking-tight">
+      <div ref={textRef} className="text-center w-full flex flex-col items-center gap-16 md:gap-32 w-full transform will-change-transform z-10 font-display">
+        <h2 className="text-[12vw] md:text-[8rem] lg:text-[10rem] font-light text-[#111111] dark:text-[#EAEAEA] leading-none tracking-tight transition-colors duration-500">
             Get in touch.
         </h2>
         
-        <div ref={linksRef} className="flex flex-wrap justify-center gap-10 md:gap-20 text-sm md:text-base uppercase tracking-[0.2em] text-neutral-500 font-medium">
-            <a href="mailto:pratap33888@gmail.com" className="hover:text-[#D4AF37] transition-colors duration-300 cursor-none relative group">
+        <div ref={linksRef} className="flex flex-wrap justify-center gap-10 md:gap-20 text-sm md:text-base uppercase tracking-[0.2em] text-neutral-600 dark:text-neutral-500 font-medium font-sans transition-colors duration-500">
+            <a href="mailto:pratap33888@gmail.com" className="hover:text-blue-600 dark:hover:text-[#D4AF37] transition-colors duration-300 cursor-none relative group transition-colors duration-500">
                 Email
-                <span className="absolute -bottom-2 left-0 w-0 h-[1px] bg-[#D4AF37] group-hover:w-full transition-all duration-300"></span>
+                <span className="absolute -bottom-2 left-0 w-0 h-[1px] bg-blue-600 dark:bg-[#D4AF37] group-hover:w-full transition-all duration-300"></span>
             </a>
-            <a href="https://www.linkedin.com/in/uday032/" target="_blank" rel="noreferrer" className="hover:text-[#D4AF37] transition-colors duration-300 cursor-none relative group">
+            <a href="https://www.linkedin.com/in/uday032/" target="_blank" rel="noreferrer" className="hover:text-blue-600 dark:hover:text-[#D4AF37] transition-colors duration-300 cursor-none relative group transition-colors duration-500">
                 LinkedIn
-                <span className="absolute -bottom-2 left-0 w-0 h-[1px] bg-[#D4AF37] group-hover:w-full transition-all duration-300"></span>
+                <span className="absolute -bottom-2 left-0 w-0 h-[1px] bg-blue-600 dark:bg-[#D4AF37] group-hover:w-full transition-all duration-300"></span>
             </a>
-            <a href="https://github.com/udaysinghrajput12" target="_blank" rel="noreferrer" className="hover:text-[#D4AF37] transition-colors duration-300 cursor-none relative group">
+            <a href="https://github.com/udaysinghrajput12" target="_blank" rel="noreferrer" className="hover:text-blue-600 dark:hover:text-[#D4AF37] transition-colors duration-300 cursor-none relative group transition-colors duration-500">
                 GitHub
-                <span className="absolute -bottom-2 left-0 w-0 h-[1px] bg-[#D4AF37] group-hover:w-full transition-all duration-300"></span>
+                <span className="absolute -bottom-2 left-0 w-0 h-[1px] bg-blue-600 dark:bg-[#D4AF37] group-hover:w-full transition-all duration-300"></span>
             </a>
         </div>
         
         <a 
             href="/resume.pdf" 
             download="Uday-Pratap-Resume.pdf"
-            className="mt-20 md:mt-24 inline-flex items-center gap-4 px-8 py-4 rounded-full border border-neutral-800 text-neutral-400 hover:border-[#D4AF37] hover:text-[#EAEAEA] hover:bg-[#D4AF37]/5 transition-all duration-500 transform hover:scale-[1.02] active:scale-[0.98] cursor-pointer z-20 group"
+            className="mt-20 md:mt-24 inline-flex items-center gap-4 px-8 py-4 rounded-full border border-black/10 dark:border-neutral-800 text-neutral-600 dark:text-neutral-400 hover:border-blue-600 dark:hover:border-[#D4AF37] hover:text-[#111111] dark:hover:text-[#EAEAEA] hover:bg-blue-600/5 dark:hover:bg-[#D4AF37]/5 transition-all duration-500 transform hover:scale-[1.02] active:scale-[0.98] cursor-pointer z-20 group transition-colors duration-500"
         >
             <span className="uppercase tracking-[0.1em] text-xs font-medium">Download Resume</span>
             <svg className="w-4 h-4 group-hover:translate-y-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -86,12 +86,13 @@ const Contact = () => {
 
       </div>
 
-      <div className="absolute bottom-10 left-0 w-full px-6 md:px-16 lg:px-32 flex justify-between items-center text-xs text-neutral-600 uppercase tracking-[0.1em]">
+      <div className="absolute bottom-10 left-0 w-full px-6 md:px-16 lg:px-32 flex justify-between items-center text-xs text-neutral-400 dark:text-neutral-600 uppercase tracking-[0.1em] transition-colors duration-500 font-sans">
           <span>© 2026 Uday Pratap.</span>
           <span>Designed with Precision.</span>
       </div>
 
     </section>
+
   );
 };
 

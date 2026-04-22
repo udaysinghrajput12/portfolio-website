@@ -4,6 +4,7 @@ export default {
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
+  darkMode: 'class',
   theme: {
     extend: {
       colors: {
@@ -13,6 +14,10 @@ export default {
           text: '#EAEAEA',
           accent: '#D4AF37',
           secondary: '#CFC6B8',
+          // Light mode specific (optional, can use tailwind classes)
+          lightBg: '#F9FAFB',
+          lightText: '#111111',
+          lightAccent: '#2563EB',
         }
       },
       fontFamily: {
@@ -24,3 +29,4 @@ export default {
   },
   plugins: [],
 }
+
