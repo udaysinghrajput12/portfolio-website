@@ -11,6 +11,7 @@ import Achievements from './components/Achievements';
 import Contact from './components/Contact';
 import { ThemeProvider } from './context/ThemeContext';
 import Navbar from './components/Navbar';
+import RobotBike3D from './components/RobotBike3D';
 
 
 
@@ -45,6 +46,7 @@ function App() {
   return (
     <ThemeProvider>
       <Navbar />
+      <RobotBike3D />
       <CustomCursor />
 
       <div className="flex flex-col w-full relative transition-colors duration-500 bg-[#F9FAFB] dark:bg-[#0B0B0F] text-[#111111] dark:text-[#EAEAEA]">
