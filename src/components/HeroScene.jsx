@@ -102,83 +102,7 @@ const Monitor = ({ isDarkMode }) => (
   </group>
 );
 
-const FloatingCard = ({ position, title, subtitle, color, onClick, delay = 0, isDarkMode }) => {
-  const mesh = useRef();
-  const [hovered, setHover] = useState(false);
-  
-  useFrame((state) => {
-    if (mesh.current) {
-        const t = state.clock.getElapsedTime();
-        mesh.current.position.y = position[1] + Math.sin(t * 1.2 + delay) * 0.12;
-        mesh.current.rotation.y = Math.sin(t * 0.4 + delay) * 0.08;
-    }
-  });
 
-  return (
-    <group ref={mesh} position={position}>
-      <mesh 
-        onClick={onClick}
-        onPointerOver={() => { setHover(true); document.body.style.cursor = 'pointer'; }}
-        onPointerOut={() => { setHover(false); document.body.style.cursor = 'none'; }}
-        castShadow
-      >
-        <boxGeometry args={[1.4, 1.8, 0.08]} />
-        <meshStandardMaterial 
-            color={hovered ? color : (isDarkMode ? '#111' : '#f8fafc')} 
-            emissive={hovered ? color : '#000'} 
-            emissiveIntensity={hovered ? 0.8 : 0} 
-            roughness={0.1}
-            metalness={0.1}
-        />
-        <Html transform distanceFactor={1.4} position={[0, 0, 0.05]} pointerEvents="none">
-          <div className="w-[160px] p-4 text-center select-none flex flex-col items-center justify-center h-full transition-all duration-300">
-            <h3 className={`font-display font-bold text-lg leading-tight mb-2 transition-colors duration-500
-                ${hovered ? (isDarkMode ? 'text-black' : 'text-white') : (isDarkMode ? 'text-white' : 'text-black')}`}>
-                {title}
-            </h3>
-            <p className={`text-[10px] uppercase tracking-[0.2em] transition-colors duration-500 font-bold
-                ${hovered ? (isDarkMode ? 'text-black/60' : 'text-white/70') : (isDarkMode ? 'text-yellow-600' : 'text-blue-600')}`}>
-                {subtitle}
-            </p>
-          </div>
-        </Html>
-      </mesh>
-    </group>
-  );
-};
-
-const OrbitingSkills = ({ isDarkMode }) => {
-  const group = useRef();
-  useFrame((state) => {
-    if (group.current) {
-        group.current.rotation.y = state.clock.getElapsedTime() * 0.2;
-    }
-  });
-
-  const skills = [
-    { name: "React", color: "#61dafb", offset: 0 },
-    { name: "Node.js", color: "#68a063", offset: Math.PI / 2 },
-    { name: "MongoDB", color: "#47a248", offset: Math.PI },
-    { name: "Azure", color: "#0089d6", offset: Math.PI * 1.5 },
-  ];
-
-  return (
-    <group ref={group} position={[0, 0, 0]}>
-      {skills.map((skill, i) => (
-        <mesh key={i} position={[Math.cos(skill.offset) * 4.5, Math.sin(skill.offset) * 0.8 + 1, Math.sin(skill.offset) * 4.5]} castShadow>
-          <octahedronGeometry args={[0.18, 0]} />
-          <meshStandardMaterial color={skill.color} emissive={skill.color} emissiveIntensity={1} wireframe />
-          <Html distanceFactor={6} position={[0, -0.4, 0]}>
-              <div className={`text-[9px] uppercase tracking-[0.3em] font-bold pointer-events-none transition-colors duration-500 whitespace-nowrap
-                ${isDarkMode ? 'text-white/40' : 'text-black/40'}`}>
-                {skill.name}
-              </div>
-          </Html>
-        </mesh>
-      ))}
-    </group>
-  );
-};
 
 const Lamp = ({ isDarkMode }) => (
     <group position={[1.8, -0.7, -0.6]}>
@@ -238,28 +162,7 @@ export default function HeroScene() {
                     <Chair isDarkMode={isDarkMode} />
                     <Monitor isDarkMode={isDarkMode} />
                     <Lamp isDarkMode={isDarkMode} />
-                    
-                    <FloatingCard 
-                      position={[-3.8, 1.2, 0]} 
-                      title="Retail AI" 
-                      subtitle="Azure / DB" 
-                      color={isDarkMode ? "#D4AF37" : "#2563EB"}
-                      delay={0}
-                      isDarkMode={isDarkMode}
-                      onClick={() => window.scrollTo({ top: window.innerHeight, behavior: 'smooth' })}
-                    />
-                    
-                    <FloatingCard 
-                      position={[3.8, 0.8, 1.2]} 
-                      title="ANIDEX" 
-                      subtitle="ML / Python" 
-                      color="#10b981" 
-                      delay={1.5}
-                      isDarkMode={isDarkMode}
-                      onClick={() => window.scrollTo({ top: window.innerHeight, behavior: 'smooth' })}
-                    />
 
-                    <OrbitingSkills isDarkMode={isDarkMode} />
                 </Float>
             </group>
 
