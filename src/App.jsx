@@ -11,7 +11,8 @@ import Achievements from './components/Achievements';
 import Contact from './components/Contact';
 import { ThemeProvider } from './context/ThemeContext';
 import Navbar from './components/Navbar';
-import RobotBikePath from './components/RobotBikePath';
+import BackgroundScene from './components/BackgroundScene';
+
 
 
 
@@ -43,24 +44,37 @@ function App() {
   return (
     <ThemeProvider>
       <Navbar />
-      <RobotBikePath />
       <CustomCursor />
 
+      {/* Global 3D Background */}
+      <BackgroundScene />
       
-      {/* Global Cinematic Overlays */}
-      <div className="fixed inset-0 pointer-events-none z-[100] mix-blend-overlay opacity-10 dark:opacity-20" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.65%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22/%3E%3C/svg%3E")', backgroundRepeat: 'repeat' }}></div>
-      <div className="fixed inset-0 pointer-events-none z-[99] bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.4)_120%)] dark:bg-[radial-gradient(circle_at_center,transparent_0%,#000000_120%)] opacity-50 dark:opacity-80 mix-blend-multiply"></div>
-
-      
-      <div className="flex flex-col w-full relative transition-colors duration-500 bg-[#F9FAFB] dark:bg-[#0B0B0F] text-[#111111] dark:text-[#EAEAEA]">
-        <Hero />
-        <About />
-        <SystemPreview />
-        <Projects />
-        <Skills />
-        <Experience />
-        <Achievements />
-        <Contact />
+      {/* App Content Wrapper - Transparent to show 3D background */}
+      <div className="flex flex-col w-full relative transition-colors duration-500 bg-transparent text-theme-lightText dark:text-theme-text z-10 pointer-events-none">
+        <div className="pointer-events-auto">
+          <Hero />
+        </div>
+        <div className="pointer-events-auto">
+          <About />
+        </div>
+        <div className="pointer-events-auto">
+          <SystemPreview />
+        </div>
+        <div className="pointer-events-auto">
+          <Projects />
+        </div>
+        <div className="pointer-events-auto">
+          <Skills />
+        </div>
+        <div className="pointer-events-auto">
+          <Experience />
+        </div>
+        <div className="pointer-events-auto">
+          <Achievements />
+        </div>
+        <div className="pointer-events-auto">
+          <Contact />
+        </div>
       </div>
     </ThemeProvider>
   );
