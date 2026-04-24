@@ -1,7 +1,7 @@
-import React, { useRef, useState, useMemo, Suspense } from 'react';
-import { Canvas, useFrame, useThree } from '@react-three/fiber';
-import { OrbitControls, Stars, Float, Text, Html, ContactShadows, Environment } from '@react-three/drei';
-import * as THREE from 'three';
+import React, { useRef, Suspense } from 'react';
+import { Canvas, useFrame } from '@react-three/fiber';
+import { OrbitControls, Stars, Float, Html, ContactShadows } from '@react-three/drei';
+
 import { useTheme } from '../context/ThemeContext';
 
 const Island = ({ isDarkMode }) => (

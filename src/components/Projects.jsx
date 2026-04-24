@@ -1,8 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import ProjectsScene from './ProjectsScene';
-
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -57,11 +55,6 @@ const Projects = () => {
   return (
     <section id="projects" ref={sectionRef} className="w-full transition-colors duration-500 bg-[#F9FAFB] dark:bg-[#0B0B0F] relative py-40 md:py-64 z-20">
       
-      {/* 3D Scene for Desktop */}
-      <div className="hidden md:block w-full mb-32">
-        <ProjectsScene />
-      </div>
-
       <div className="w-full max-w-[90rem] mx-auto px-6 md:px-16 lg:px-32">
         <h3 className="text-xs tracking-[0.2em] text-blue-600 dark:text-[#D4AF37] uppercase mb-24 md:mb-48 font-medium transition-colors duration-500">Selected Works</h3>
 
