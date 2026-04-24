@@ -3,7 +3,7 @@ import { useTheme } from '../context/ThemeContext';
 import { motion } from 'framer-motion';
 import { FiSun, FiMoon } from 'react-icons/fi';
 
-const ThemeToggle = () => {
+const ThemeToggle = ({ standalone = true }) => {
   const { isDarkMode, toggleTheme } = useTheme();
 
   return (
@@ -15,7 +15,7 @@ const ThemeToggle = () => {
       whileTap={{ scale: 0.95, rotate: 15 }}
       onClick={toggleTheme}
       className={`
-        fixed top-[20px] left-[20px] z-[1000]
+        ${standalone ? 'fixed top-[20px] left-[20px]' : 'relative'} z-[1000]
         w-12 h-12 rounded-full flex items-center justify-center
         backdrop-blur-md border transition-all duration-500
         ${isDarkMode 

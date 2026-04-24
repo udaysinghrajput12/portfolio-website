@@ -205,7 +205,7 @@ export default function HeroScene() {
     <div className={`w-full h-screen absolute inset-0 z-0 overflow-hidden transition-all duration-1000 bg-gradient-to-b
       ${isDarkMode 
         ? 'from-[#0B0B0F] to-[#0A0F1C]' 
-        : 'from-[#F8FAFB] to-[#F1F5F9]'
+        : 'from-[#F3F4F6] to-[#E5E7EB]'
       }`}>
       <Canvas 
         shadows 
@@ -219,17 +219,17 @@ export default function HeroScene() {
             depth: true
         }}
       >
-        <fog attach="fog" args={[isDarkMode ? '#0B0B0F' : '#F8FAFB', 8, 25]} />
+        <fog attach="fog" args={[isDarkMode ? '#0B0B0F' : '#F3F4F6', 8, 22]} />
         
         {/* Optimized Stars */}
-        <Stars radius={100} depth={50} count={isDarkMode ? 3000 : 800} factor={4} saturation={0} fade speed={0.5} />
+        <Stars radius={100} depth={50} count={isDarkMode ? 3000 : 400} factor={4} saturation={0} fade speed={0.5} />
         
         {/* Dynamic lighting */}
         <Suspense fallback={null}>
-            <ambientLight intensity={isDarkMode ? 1.2 : 1.8} color={isDarkMode ? "#ffffff" : "#fefefe"} />
-            <directionalLight position={[10, 10, 5]} intensity={isDarkMode ? 2.5 : 1.2} castShadow shadow-mapSize={[512, 512]} />
-            <spotLight position={[-10, 10, -5]} intensity={isDarkMode ? 5 : 2} color={isDarkMode ? "#D4AF37" : "#2563EB"} angle={0.5} penumbra={0.8} />
-            <spotLight position={[5, -5, 10]} intensity={isDarkMode ? 3 : 1} color={isDarkMode ? "#3b82f6" : "#2563EB"} angle={0.5} penumbra={0.8} />
+            <ambientLight intensity={isDarkMode ? 1.2 : 1.0} color={isDarkMode ? "#ffffff" : "#f0f0f0"} />
+            <directionalLight position={[10, 10, 5]} intensity={isDarkMode ? 2.5 : 0.8} castShadow shadow-mapSize={[512, 512]} />
+            <spotLight position={[-10, 10, -5]} intensity={isDarkMode ? 5 : 1.5} color={isDarkMode ? "#D4AF37" : "#3B82F6"} angle={0.5} penumbra={0.8} />
+            <spotLight position={[5, -5, 10]} intensity={isDarkMode ? 3 : 0.8} color={isDarkMode ? "#3b82f6" : "#2563EB"} angle={0.5} penumbra={0.8} />
 
             <group position={[0, -0.5, 0]}>
                 <Float speed={2} rotationIntensity={0.2} floatIntensity={0.5}>

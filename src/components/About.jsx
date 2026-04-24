@@ -38,7 +38,7 @@ const About = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="py-40 md:py-64 px-6 md:px-16 lg:px-32 transition-colors duration-500 bg-[#F9FAFB] dark:bg-[#0B0B0F] relative z-10 w-full overflow-hidden">
+    <section id="about" ref={sectionRef} className="py-40 md:py-64 px-6 md:px-16 lg:px-32 transition-colors duration-500 bg-[#F9FAFB] dark:bg-[#0B0B0F] relative z-10 w-full overflow-hidden">
       <div className="max-w-[90rem] mx-auto flex flex-col md:flex-row gap-24 md:gap-32 w-full">
         <div className="w-full md:w-1/4 shrink-0">
           <h3 className="text-xs tracking-[0.2em] text-blue-600 dark:text-[#D4AF37] uppercase font-medium transition-colors duration-500">01. About</h3>

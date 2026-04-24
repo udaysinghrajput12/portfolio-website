@@ -10,7 +10,7 @@ import Experience from './components/Experience';
 import Achievements from './components/Achievements';
 import Contact from './components/Contact';
 import { ThemeProvider } from './context/ThemeContext';
-import ThemeToggle from './components/ThemeToggle';
+import Navbar from './components/Navbar';
 
 function App() {
   useEffect(() => {
@@ -38,7 +38,7 @@ function App() {
 
   return (
     <ThemeProvider>
-      <ThemeToggle />
+      <Navbar />
       <CustomCursor />
       
       {/* Global Cinematic Overlays */}

@@ -51,7 +51,7 @@ const Contact = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="py-40 md:py-64 px-6 md:px-16 lg:px-32 transition-colors duration-500 bg-[#F9FAFB] dark:bg-[#0B0B0F] border-t border-black/5 dark:border-white/5 relative flex flex-col justify-center items-center overflow-hidden w-full m-0 min-h-[90vh]">
+    <section id="contact" ref={sectionRef} className="py-40 md:py-64 px-6 md:px-16 lg:px-32 transition-colors duration-500 bg-[#F9FAFB] dark:bg-[#0B0B0F] border-t border-black/5 dark:border-white/5 relative flex flex-col justify-center items-center overflow-hidden w-full m-0 min-h-[90vh]">
       
       <div ref={textRef} className="text-center w-full flex flex-col items-center gap-16 md:gap-32 w-full transform will-change-transform z-10 font-display">
         <h2 className="text-[12vw] md:text-[8rem] lg:text-[10rem] font-light text-[#111111] dark:text-[#EAEAEA] leading-none tracking-tight transition-colors duration-500">

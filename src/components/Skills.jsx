@@ -47,7 +47,7 @@ const Skills = () => {
   }, []);
 
   return (
-    <section ref={containerRef} className="py-40 md:py-64 px-6 md:px-16 lg:px-32 transition-colors duration-500 bg-[#F9FAFB] dark:bg-[#0B0B0F] border-t border-black/5 dark:border-white/5 relative z-10 w-full">
+    <section id="skills" ref={containerRef} className="py-40 md:py-64 px-6 md:px-16 lg:px-32 transition-colors duration-500 bg-[#F9FAFB] dark:bg-[#0B0B0F] border-t border-black/5 dark:border-white/5 relative z-10 w-full">
       <div className="max-w-[90rem] mx-auto flex flex-col md:flex-row gap-24 md:gap-32 w-full">
         
         <div className="w-full md:w-1/4 shrink-0">

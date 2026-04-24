@@ -53,7 +53,7 @@ const Projects = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="w-full transition-colors duration-500 bg-[#F9FAFB] dark:bg-[#0B0B0F] relative py-40 md:py-64 px-6 md:px-16 lg:px-32 z-20">
+    <section id="projects" ref={sectionRef} className="w-full transition-colors duration-500 bg-[#F9FAFB] dark:bg-[#0B0B0F] relative py-40 md:py-64 px-6 md:px-16 lg:px-32 z-20">
       <div className="w-full max-w-[90rem] mx-auto">
         <h3 className="text-xs tracking-[0.2em] text-blue-600 dark:text-[#D4AF37] uppercase mb-24 md:mb-48 font-medium transition-colors duration-500">Selected Works</h3>
         

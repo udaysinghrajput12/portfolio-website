@@ -13,6 +13,7 @@
   
   html {
     @apply transition-colors duration-500;
+    scroll-behavior: smooth;
   }
   
   /* Global smooth transitions for theme switching */
