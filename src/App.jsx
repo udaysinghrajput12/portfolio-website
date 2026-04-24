@@ -11,7 +11,8 @@ import Achievements from './components/Achievements';
 import Contact from './components/Contact';
 import { ThemeProvider } from './context/ThemeContext';
 import Navbar from './components/Navbar';
-import BackgroundScene from './components/BackgroundScene';
+import RobotBikePath from './components/RobotBikePath';
+
 
 
 
@@ -44,41 +45,21 @@ function App() {
   return (
     <ThemeProvider>
       <Navbar />
+      <RobotBikePath />
       <CustomCursor />
 
-      {/* Global 3D Background */}
-      <BackgroundScene />
-      
-      {/* App Content Wrapper - Transparent to show 3D background */}
-      <div className="flex flex-col w-full relative transition-colors duration-500 bg-transparent text-theme-lightText dark:text-theme-text z-10 pointer-events-none">
-        <div className="pointer-events-auto">
-          <Hero />
-        </div>
-        <div className="pointer-events-auto">
-          <About />
-        </div>
-        <div className="pointer-events-auto">
-          <SystemPreview />
-        </div>
-        <div className="pointer-events-auto">
-          <Projects />
-        </div>
-        <div className="pointer-events-auto">
-          <Skills />
-        </div>
-        <div className="pointer-events-auto">
-          <Experience />
-        </div>
-        <div className="pointer-events-auto">
-          <Achievements />
-        </div>
-        <div className="pointer-events-auto">
-          <Contact />
-        </div>
+      <div className="flex flex-col w-full relative transition-colors duration-500 bg-[#F9FAFB] dark:bg-[#0B0B0F] text-[#111111] dark:text-[#EAEAEA]">
+        <Hero />
+        <About />
+        <SystemPreview />
+        <Projects />
+        <Skills />
+        <Experience />
+        <Achievements />
+        <Contact />
       </div>
     </ThemeProvider>
   );
 }
 
 export default App;
-

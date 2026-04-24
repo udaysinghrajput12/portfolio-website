@@ -43,7 +43,7 @@ const SystemPreview = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="py-40 md:py-64 px-6 md:px-16 lg:px-32 transition-colors duration-500 bg-transparent relative z-20 w-full overflow-hidden border-t border-black/5 dark:border-white/5">
+    <section ref={sectionRef} className="py-40 md:py-64 px-6 md:px-16 lg:px-32 transition-colors duration-500 bg-[#F9FAFB] dark:bg-[#0B0B0F] relative z-20 w-full overflow-hidden border-t border-black/5 dark:border-white/5">
       <div className="max-w-[90rem] mx-auto flex flex-col lg:flex-row items-center lg:items-center justify-between gap-24 lg:gap-32 w-full">
         
         {/* Left Side: Minimal Text Content */}

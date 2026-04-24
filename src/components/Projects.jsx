@@ -53,7 +53,7 @@ const Projects = () => {
   }, []);
 
   return (
-    <section id="projects" ref={sectionRef} className="w-full transition-colors duration-500 bg-transparent relative py-32 md:py-48 z-20 overflow-hidden">
+    <section id="projects" ref={sectionRef} className="w-full transition-colors duration-500 bg-white dark:bg-theme-surface relative py-32 md:py-48 z-20 overflow-hidden">
       
       {/* Decorative winding path */}
       <svg className="absolute left-1/2 -translate-x-1/2 top-0 w-full h-full -z-10 opacity-20 pointer-events-none" preserveAspectRatio="none" viewBox="0 0 100 1000">
