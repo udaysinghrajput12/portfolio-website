@@ -20,73 +20,80 @@ const RobotBike = () => {
     // Media query to reduce movement on mobile
     const isMobile = window.innerWidth < 768;
 
-    const showTooltip = (text) => {
-      setTooltipText(text);
-      gsap.to(tooltipRef.current, { opacity: 1, scale: 1, duration: 0.3, ease: 'back.out(1.5)' });
+    let ctx = gsap.context(() => {
+      const showTooltip = (text) => {
+        setTooltipText(text);
+        gsap.to(tooltipRef.current, { opacity: 1, scale: 1, duration: 0.3, ease: 'back.out(1.5)' });
+        setTimeout(() => {
+          if (tooltipRef.current) {
+             gsap.to(tooltipRef.current, { opacity: 0, scale: 0.5, duration: 0.3 });
+          }
+        }, 3000);
+      };
+
+      // Constant subtle bounce (idle state)
+      gsap.to(bikeGroupRef.current, {
+        y: -5,
+        duration: 0.4,
+        yoyo: true,
+        repeat: -1,
+        ease: "sine.inOut"
+      });
+
+      // Wait a tick for layout to settle before creating ScrollTriggers
       setTimeout(() => {
-        if (tooltipRef.current) {
-           gsap.to(tooltipRef.current, { opacity: 0, scale: 0.5, duration: 0.3 });
-        }
-      }, 3000);
-    };
-
-    // Constant subtle bounce (idle state)
-    gsap.to(bikeGroupRef.current, {
-      y: -5,
-      duration: 0.4,
-      yoyo: true,
-      repeat: -1,
-      ease: "sine.inOut"
-    });
-
-    // Create a master timeline tied to the document scroll
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: document.body,
-        start: "top top",
-        end: "bottom bottom",
-        scrub: 0.5, // Smooth scrubbing
-        onUpdate: (self) => {
-          // Tilt the bike forward slightly based on scroll velocity
-          const velocity = self.getVelocity();
-          const tilt = Math.max(-15, Math.min(15, velocity / -100));
-          gsap.to(bikeGroupRef.current, { rotation: tilt, duration: 0.2 });
-        }
-      }
-    });
-
-    // Animate X across the screen (0 to 80vw to avoid overflow)
-    tl.to(bikeWrapperRef.current, {
-      x: isMobile ? '70vw' : '85vw',
-      ease: "none"
-    }, 0);
-
-    // Animate wheels rotating as it moves
-    tl.to([frontWheelRef.current, backWheelRef.current], {
-      rotation: 360 * (isMobile ? 5 : 8), // Multiple rotations over the page length
-      ease: "none",
-      transformOrigin: "center"
-    }, 0);
-
-    // Section specific triggers for Tooltips and slight Y adjustments
-    const sections = [
-      { id: '#about', text: 'Welcome to About! 👋' },
-      { id: '#projects', text: 'Check out these Quests! 🚀' },
-      { id: '#skills', text: 'My Arsenal 🛠️' },
-      { id: '#contact', text: 'Let\'s talk! 📬' }
-    ];
-
-    sections.forEach(sec => {
-      const el = document.querySelector(sec.id);
-      if (el) {
-        ScrollTrigger.create({
-          trigger: el,
-          start: "top center",
-          onEnter: () => showTooltip(sec.text),
-          onEnterBack: () => showTooltip(sec.text)
+        // Create a master timeline tied to the document scroll
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: document.documentElement,
+            start: "top top",
+            end: "bottom bottom",
+            scrub: true, // Use strict scrub for perfect sync, no lag
+            onUpdate: (self) => {
+              // Tilt the bike forward slightly based on scroll velocity
+              const velocity = self.getVelocity();
+              const tilt = Math.max(-15, Math.min(15, velocity / -100));
+              gsap.to(bikeGroupRef.current, { rotation: tilt, duration: 0.2, overwrite: "auto" });
+            }
+          }
         });
-      }
-    });
+
+        // Animate X across the screen (0 to 80vw to avoid overflow)
+        tl.to(bikeWrapperRef.current, {
+          x: isMobile ? '70vw' : '85vw',
+          ease: "none"
+        }, 0);
+
+        // Animate wheels rotating as it moves
+        tl.to([frontWheelRef.current, backWheelRef.current], {
+          rotation: 360 * (isMobile ? 4 : 6), // Multiple rotations over the page length
+          ease: "none",
+          transformOrigin: "center"
+        }, 0);
+
+        // Section specific triggers for Tooltips
+        const sections = [
+          { id: '#about', text: 'Welcome to About! 👋' },
+          { id: '#projects', text: 'Check out these Quests! 🚀' },
+          { id: '#skills', text: 'My Arsenal 🛠️' },
+          { id: '#contact', text: 'Let\'s talk! 📬' }
+        ];
+
+        sections.forEach(sec => {
+          const el = document.querySelector(sec.id);
+          if (el) {
+            ScrollTrigger.create({
+              trigger: el,
+              start: "top center",
+              onEnter: () => showTooltip(sec.text),
+              onEnterBack: () => showTooltip(sec.text)
+            });
+          }
+        });
+        
+        ScrollTrigger.refresh();
+      }, 100);
+    }, containerRef);
 
     // Listen to Navbar clicks to override and scroll
     const handleNav = (e) => {
@@ -102,7 +109,7 @@ const RobotBike = () => {
     window.addEventListener('robotNavigate', handleNav);
 
     return () => {
-      ScrollTrigger.getAll().forEach(t => t.kill());
+      ctx.revert(); // Clean up GSAP context
       window.removeEventListener('robotNavigate', handleNav);
     };
   }, []);
