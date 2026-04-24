@@ -53,11 +53,15 @@ const Navbar = () => {
     e.preventDefault();
     setIsOpen(false);
     
-    // Dispatch custom event for RobotGuide
-    const event = new CustomEvent('robotNavigate', {
-      detail: { targetId: href, targetName: name }
-    });
-    window.dispatchEvent(event);
+    if (href === '#') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      const id = href.replace('#', '');
+      const element = document.getElementById(id);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    }
   };
 
   return (
