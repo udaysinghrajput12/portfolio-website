@@ -38,15 +38,28 @@ const About = () => {
   }, []);
 
   return (
-    <section id="about" ref={sectionRef} className="py-40 md:py-64 px-6 md:px-16 lg:px-32 transition-colors duration-500 bg-[#F9FAFB] dark:bg-[#0B0B0F] relative z-10 w-full overflow-hidden">
-      <div className="max-w-[90rem] mx-auto flex flex-col md:flex-row gap-24 md:gap-32 w-full">
-        <div className="w-full md:w-1/4 shrink-0">
-          <h3 className="text-xs tracking-[0.2em] text-blue-600 dark:text-[#D4AF37] uppercase font-medium transition-colors duration-500">01. About</h3>
+    <section id="about" ref={sectionRef} className="py-32 md:py-48 px-6 md:px-12 transition-colors duration-500 bg-theme-lightBg dark:bg-theme-bg relative z-10 w-full overflow-hidden">
+      
+      {/* Playful background element */}
+      <div className="absolute top-10 right-10 w-64 h-64 bg-theme-lightSecondary/10 dark:bg-theme-secondary/10 rounded-[40%_60%_70%_30%_/_40%_50%_60%_50%] animate-[spin_8s_linear_infinite] -z-10"></div>
+
+      <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-16 md:gap-24 w-full bg-white/50 dark:bg-theme-surface/50 backdrop-blur-md p-8 md:p-16 rounded-[3rem] border border-neutral-200 dark:border-neutral-800 shadow-xl">
+        <div className="w-full md:w-1/3 shrink-0 flex justify-center">
+           <div className="w-48 h-48 md:w-64 md:h-64 rounded-full bg-gradient-to-tr from-theme-lightAccent to-theme-lightSecondary dark:from-theme-accent dark:to-theme-secondary flex items-center justify-center shadow-lg shadow-theme-lightAccent/20 dark:shadow-theme-accent/20 overflow-hidden relative">
+              {/* Cute abstract face/graphic inside */}
+              <div className="w-24 h-24 bg-white/20 rounded-full flex gap-4 items-center justify-center">
+                 <div className="w-4 h-4 bg-white rounded-full animate-bounce"></div>
+                 <div className="w-4 h-4 bg-white rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+              </div>
+           </div>
         </div>
-        <div className="w-full md:w-3/4">
-          <p ref={textRef} className="text-3xl md:text-5xl lg:text-7xl font-display font-light leading-[1.35] text-[#111111] dark:text-[#EAEAEA] max-w-5xl transition-colors duration-500">
-            A precise MERN Stack Developer. <br/><br/>
-            I engineer minimal, highly scalable architectures leveraging MongoDB, React, Node.js, and Microsoft Azure. My goal is bringing seamless, calm digital experiences to life.
+        <div className="w-full md:w-2/3">
+          <div className="inline-block px-4 py-2 rounded-full bg-theme-lightSecondary/20 dark:bg-theme-secondary/20 text-theme-lightSecondary dark:text-theme-secondary text-sm font-bold tracking-wider uppercase mb-6">
+            Chapter 1: The Origin
+          </div>
+          <p ref={textRef} className="text-2xl md:text-4xl lg:text-5xl font-display font-medium leading-[1.4] text-theme-lightText dark:text-theme-text transition-colors duration-500">
+            I'm a <span className="text-theme-lightAccent dark:text-theme-accent">MERN Stack Developer</span> who loves turning complex spaghetti code into beautiful, scalable architectures. <br/><br/>
+            Whether it's building robust APIs with Node.js or painting pixels with React, my ultimate goal is simple: <span className="text-theme-lightSecondary dark:text-theme-secondary">delightful digital experiences</span>.
           </p>
         </div>
       </div>

@@ -9,15 +9,17 @@ export default {
     extend: {
       colors: {
         theme: {
-          bg: '#0B0B0F',
-          surface: '#13131A',
-          text: '#EAEAEA',
-          accent: '#D4AF37',
-          secondary: '#CFC6B8',
-          // Light mode specific (optional, can use tailwind classes)
-          lightBg: '#F9FAFB',
-          lightText: '#111111',
-          lightAccent: '#2563EB',
+          bg: '#1a1a2e',
+          surface: '#16213e',
+          text: '#f3f4f6',
+          accent: '#ffb703',
+          secondary: '#8b5cf6',
+          // Light mode specific
+          lightBg: '#fdfbf7',
+          lightSurface: '#f3f4f6',
+          lightText: '#1f2937',
+          lightAccent: '#fb8500',
+          lightSecondary: '#8b5cf6',
         }
       },
       fontFamily: {

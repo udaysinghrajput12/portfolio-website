@@ -47,25 +47,34 @@ const Skills = () => {
   }, []);
 
   return (
-    <section id="skills" ref={containerRef} className="py-40 md:py-64 transition-colors duration-500 bg-[#F9FAFB] dark:bg-[#0B0B0F] border-t border-black/5 dark:border-white/5 relative z-10 w-full">
+    <section id="skills" ref={containerRef} className="py-32 md:py-48 transition-colors duration-500 bg-theme-lightBg dark:bg-theme-bg relative z-10 w-full overflow-hidden">
       
-      <div className="max-w-[90rem] mx-auto px-6 md:px-16 lg:px-32 flex flex-col md:flex-row gap-24 md:gap-32 w-full">
+      {/* Decorative track representing the journey */}
+      <div className="absolute left-12 md:left-24 top-0 w-1 h-full bg-gradient-to-b from-transparent via-theme-lightSecondary/20 dark:via-theme-secondary/20 to-transparent -z-10 hidden md:block"></div>
+
+      <div className="max-w-6xl mx-auto px-6 md:px-12 w-full flex flex-col md:flex-row gap-16 md:gap-32 relative">
         
-        <div className="w-full md:w-1/4 shrink-0">
-          <h3 className="text-xs tracking-[0.2em] text-blue-600 dark:text-[#D4AF37] uppercase font-medium transition-colors duration-500">Core Capabilities</h3>
+        <div className="w-full md:w-1/3 shrink-0">
+          <div className="inline-block px-4 py-2 rounded-full bg-theme-lightAccent/20 dark:bg-theme-accent/20 text-theme-lightAccent dark:text-theme-accent text-sm font-bold tracking-wider uppercase mb-6">
+            Chapter 2: The Arsenal
+          </div>
+          <h2 className="text-4xl md:text-5xl font-display font-medium text-theme-lightText dark:text-theme-text mb-6">
+            Tools of the trade
+          </h2>
+          <p className="text-lg text-neutral-600 dark:text-neutral-400">
+            A craftsman is only as good as their tools. Here are the technologies I've mastered to bring ideas to life.
+          </p>
         </div>
 
-        <div className="w-full md:w-3/4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-20 gap-x-12">
+        <div className="w-full md:w-2/3 flex flex-wrap gap-4 md:gap-6">
           {skillGroups.map((group, idx) => (
-            <div key={idx} ref={el => groupsRef.current[idx] = el} className="flex flex-col gap-8">
-              <h4 className="text-xs tracking-[0.15em] text-neutral-400 dark:text-neutral-600 uppercase pb-4 border-b border-black/5 dark:border-white/5 transition-colors duration-500">{group.category}</h4>
-              <ul className="flex flex-col gap-4">
-                {group.items.map((item, i) => (
-                  <li key={i} className="text-xl md:text-2xl font-light text-[#111111] dark:text-[#EAEAEA] transition-colors duration-500">
-                    {item}
-                  </li>
-                ))}
-              </ul>
+            <div key={idx} ref={el => groupsRef.current[idx] = el} className="flex flex-wrap gap-3 mb-8 w-full">
+              <div className="w-full text-xs font-bold uppercase tracking-widest text-neutral-400 dark:text-neutral-500 mb-2">{group.category}</div>
+              {group.items.map((item, i) => (
+                <div key={i} className="px-6 py-3 rounded-2xl bg-white dark:bg-theme-surface border border-neutral-200 dark:border-neutral-800 text-theme-lightText dark:text-theme-text font-medium shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 cursor-default">
+                  {item}
+                </div>
+              ))}
             </div>
           ))}
         </div>

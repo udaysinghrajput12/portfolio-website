@@ -1,55 +1,71 @@
-import React, { useEffect, useRef, Suspense } from 'react';
+import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
-import HeroScene from './HeroScene';
+import Avatar from './Avatar';
+import { useTheme } from '../context/ThemeContext';
 
 const Hero = () => {
-  const overlayRef = useRef(null);
+  const containerRef = useRef(null);
+  const textRef = useRef(null);
+  const { isDarkMode } = useTheme();
 
   useEffect(() => {
-    // Elegant Text Overlay Reveal
-    gsap.fromTo(overlayRef.current.children,
-      { y: 40, opacity: 0, filter: 'blur(5px)' },
-      { y: 0, opacity: 1, filter: 'blur(0px)', duration: 1.5, stagger: 0.15, ease: 'power3.out', delay: 1 }
+    const tl = gsap.timeline();
+    
+    tl.fromTo(containerRef.current, 
+      { opacity: 0 }, 
+      { opacity: 1, duration: 1, ease: 'power2.out' }
+    );
+
+    tl.fromTo(textRef.current.children,
+      { y: 40, opacity: 0 },
+      { y: 0, opacity: 1, duration: 1, stagger: 0.2, ease: 'back.out(1.7)' },
+      "-=0.5"
     );
   }, []);
 
   return (
-    <section id="home" className="relative w-full h-screen flex flex-col justify-center overflow-hidden transition-colors duration-500 bg-[#F9FAFB] dark:bg-[#0B0B0F] m-0">
+    <section id="home" className="relative w-full min-h-screen flex items-center justify-center overflow-hidden transition-colors duration-500 bg-theme-lightBg dark:bg-theme-bg m-0">
       
-      {/* 3D Core Scene Background */}
-      <Suspense fallback={<div className="absolute inset-0 flex items-center justify-center text-blue-600 dark:text-yellow-600 text-xs tracking-[0.3em] font-mono animate-pulse">INITIALIZING 3D WORKSPACE...</div>}>
-          <HeroScene />
-      </Suspense>
+      {/* Decorative blobs */}
+      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-theme-lightAccent/20 dark:bg-theme-secondary/20 rounded-full blur-3xl -z-10 animate-pulse"></div>
+      <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-theme-lightSecondary/20 dark:bg-theme-accent/20 rounded-full blur-3xl -z-10 animate-pulse" style={{ animationDelay: '2s' }}></div>
 
-      {/* HTML Overlay */}
-      <div className="absolute inset-0 z-50 flex flex-col justify-end p-6 md:p-16 lg:px-32 pb-24 md:pb-32 pointer-events-none">
-        <div ref={overlayRef} className="max-w-5xl will-change-transform relative group">
-          
-          {/* Premium Glassmorphism Panel - subtle but always present for readability */}
-          <div className="absolute -inset-8 bg-white/10 dark:bg-black/10 backdrop-blur-[2px] rounded-[2rem] -z-10 opacity-100 transition-all duration-700 hidden md:block border border-white/20 dark:border-white/5" />
-          
-          {/* Subtle Gradient Overlay - the primary readability booster */}
-          <div className="absolute -inset-x-32 -inset-y-16 bg-gradient-to-r from-white/80 via-white/40 to-transparent dark:from-black/80 dark:via-black/40 dark:to-transparent -z-20 blur-3xl opacity-100 transition-all duration-700" />
-
-          <h1 className="text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-display font-medium tracking-tight text-[#111111] dark:text-[#EAEAEA] mb-2 leading-tight drop-shadow-[0_2px_10px_rgba(0,0,0,0.08)] dark:drop-shadow-[0_2px_15px_rgba(0,0,0,0.5)] pointer-events-auto w-max transition-all duration-500">
-            Uday Pratap.
+      <div ref={containerRef} className="max-w-7xl mx-auto px-6 md:px-12 flex flex-col md:flex-row items-center justify-between gap-12 lg:gap-24 w-full z-10">
+        
+        <div ref={textRef} className="flex-1 text-center md:text-left flex flex-col items-center md:items-start gap-6 pt-24 md:pt-0">
+          <div className="inline-block px-4 py-2 rounded-full bg-white dark:bg-theme-surface shadow-sm border border-neutral-200 dark:border-neutral-800 text-sm font-medium text-neutral-600 dark:text-neutral-300">
+            👋 Welcome to my universe
+          </div>
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-display font-black tracking-tight text-theme-lightText dark:text-theme-text leading-[1.1]">
+            Hi, I'm <br/><span className="text-transparent bg-clip-text bg-gradient-to-r from-theme-lightAccent to-theme-lightSecondary dark:from-theme-accent dark:to-theme-secondary">Uday Pratap.</span>
           </h1>
-          <h2 className="text-2xl md:text-4xl lg:text-5xl font-display font-light text-neutral-800 dark:text-neutral-300 leading-tight drop-shadow-md transition-all duration-500 max-w-3xl">
-            Building scalable web systems.
-          </h2>
-          
-          <p className="mt-8 text-xs md:text-sm text-blue-700 dark:text-[#D4AF37] uppercase tracking-[0.2em] font-bold drop-shadow-sm bg-white/60 dark:bg-black/60 backdrop-blur-md w-max px-6 py-2.5 rounded-full hidden md:flex items-center gap-2 transition-all duration-500 shadow-xl border border-white/50 dark:border-white/10">
-            MERN Stack Developer <span className="mx-2 text-neutral-400 dark:text-neutral-600 opacity-50">|</span> Azure <span className="mx-2 text-neutral-400 dark:text-neutral-600 opacity-50">|</span> AI
+          <p className="text-xl md:text-2xl font-sans text-neutral-600 dark:text-neutral-400 max-w-xl leading-relaxed">
+            I craft playful, scalable web systems and turn complex problems into delightful user experiences.
           </p>
+          
+          <div className="flex gap-4 mt-8">
+            <a href="#projects" className="px-8 py-4 rounded-2xl bg-theme-lightAccent dark:bg-theme-accent text-white dark:text-theme-bg font-bold shadow-lg shadow-theme-lightAccent/30 dark:shadow-theme-accent/30 hover:-translate-y-1 transition-transform">
+              Explore my world
+            </a>
+          </div>
         </div>
+
+        <div className="flex-1 flex justify-center md:justify-end pb-24 md:pb-0">
+          <Avatar isDarkMode={isDarkMode} />
+        </div>
+
       </div>
       
-      {/* Interaction Hint */}
-      <div className="absolute bottom-6 md:bottom-10 left-1/2 -translate-x-1/2 text-[10px] md:text-xs text-black/40 dark:text-white/30 tracking-[0.4em] font-mono animate-pulse pointer-events-none z-50 text-center w-full transition-colors duration-500">
-        CLICK + DRAG TO EXPLORE OR SCROLL DOWN
+      {/* Scroll indicator */}
+      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce opacity-50">
+        <span className="text-xs font-bold tracking-widest uppercase text-neutral-500">Scroll to begin</span>
+        <svg className="w-4 h-4 text-neutral-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+        </svg>
       </div>
-    </section>
 
+    </section>
   );
 };
+
 export default Hero;
