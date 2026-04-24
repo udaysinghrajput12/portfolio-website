@@ -11,7 +11,8 @@ import Achievements from './components/Achievements';
 import Contact from './components/Contact';
 import { ThemeProvider } from './context/ThemeContext';
 import Navbar from './components/Navbar';
-import RobotGuideAdvanced from './components/RobotGuideAdvanced';
+import RobotBikePath from './components/RobotBikePath';
+
 
 
 
@@ -42,7 +43,7 @@ function App() {
   return (
     <ThemeProvider>
       <Navbar />
-      <RobotGuideAdvanced />
+      <RobotBikePath />
       <CustomCursor />
 
       
