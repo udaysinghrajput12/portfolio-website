@@ -11,6 +11,7 @@ import Achievements from './components/Achievements';
 import Contact from './components/Contact';
 import { ThemeProvider } from './context/ThemeContext';
 import Navbar from './components/Navbar';
+import RobotGuide from './components/RobotGuide';
 
 function App() {
   useEffect(() => {
@@ -39,6 +40,7 @@ function App() {
   return (
     <ThemeProvider>
       <Navbar />
+      <RobotGuide />
       <CustomCursor />
       
       {/* Global Cinematic Overlays */}

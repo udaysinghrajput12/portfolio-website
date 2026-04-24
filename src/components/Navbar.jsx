@@ -49,21 +49,15 @@ const Navbar = () => {
     return () => observer.disconnect();
   }, []);
 
-  const scrollToSection = (e, href) => {
+  const scrollToSection = (e, href, name = 'Top') => {
     e.preventDefault();
-    if (href === '#') {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-      setIsOpen(false);
-      return;
-    }
-    const targetId = href.replace('#', '');
-    const elem = document.getElementById(targetId);
-    if (elem) {
-      elem.scrollIntoView({
-        behavior: 'smooth',
-      });
-    }
     setIsOpen(false);
+    
+    // Dispatch custom event for RobotGuide
+    const event = new CustomEvent('robotNavigate', {
+      detail: { targetId: href, targetName: name }
+    });
+    window.dispatchEvent(event);
   };
 
   return (
@@ -84,7 +78,7 @@ const Navbar = () => {
         {/* Logo */}
         <a 
           href="#" 
-          onClick={(e) => scrollToSection(e, '#')}
+          onClick={(e) => scrollToSection(e, '#', 'Top')}
           className="text-xl font-display font-medium tracking-tight text-[#111111] dark:text-[#EAEAEA]"
         >
           UP<span className="text-blue-600 dark:text-[#D4AF37]">.</span>
@@ -96,7 +90,7 @@ const Navbar = () => {
             <a
               key={item.name}
               href={item.href}
-              onClick={(e) => scrollToSection(e, item.href)}
+              onClick={(e) => scrollToSection(e, item.href, item.name)}
               className={`text-sm uppercase tracking-[0.2em] transition-all duration-300 relative group
                 ${activeSection === item.href.slice(1) 
                   ? 'text-blue-600 dark:text-[#D4AF37]' 
@@ -147,7 +141,7 @@ const Navbar = () => {
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: idx * 0.05 }}
-                    onClick={(e) => scrollToSection(e, item.href)}
+                    onClick={(e) => scrollToSection(e, item.href, item.name)}
                     className={`text-2xl font-display font-light tracking-wide py-2 border-b border-black/5 dark:border-white/5 last:border-0
                       ${activeSection === item.href.slice(1) 
                         ? 'text-blue-600 dark:text-[#D4AF37]' 
